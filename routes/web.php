@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/saludo', function () {
     return 'Hola';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateComprasTable extends Migration
+class CreateCompraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateComprasTable extends Migration
      */
     public function up()
     {
-        Schema::create('compras', function (Blueprint $table) {
+        Schema::create('compra', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_cliente')->references('id')->on('cliente');
+            $table->integer('id_tienda')->references('id')->on('tienda');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateComprasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('compras');
+        Schema::dropIfExists('compra');
     }
 }

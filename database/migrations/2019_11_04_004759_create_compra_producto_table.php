@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatalogoTiendaTable extends Migration
+class CreateCompraProductoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCatalogoTiendaTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalogo_tienda', function (Blueprint $table) {
+        Schema::create('compra_producto', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_producto')->references('id')->on('producto');
-            $table->integer('id_tienda')->references('id')->on('tienda');
+            $table->integer('id_compra')->references('id')->on('compra');
+            $table->integer('id_producto')->refenreces('id')->on('producto');
+            $table->integer('cantidad')->require();
+            $table->double('valor');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateCatalogoTiendaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalogo_tienda');
+        Schema::dropIfExists('compra_producto');
     }
 }

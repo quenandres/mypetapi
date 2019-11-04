@@ -15,6 +15,12 @@ class CreateProductoTable extends Migration
     {
         Schema::create('producto', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('Nombre')->require();
+            $table->integer('Categoria')->require();
+            $table->integer('Stock')->require()->unique();
+            $table->string('Precio')->require();
+            $table->text('Description')->require();
+            $table->text('id_tienda')->references('id')->on('tienda');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateCatalogoTiendaTable extends Migration
         Schema::create('catalogo_tienda', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_producto')->references('id')->on('producto');
-            $table->integer('id_tienda')->references('id')->on('tienda');
+            //$table->integer('id_tienda')->references('id')->on('tienda');
             $table->timestamps();
         });
     }

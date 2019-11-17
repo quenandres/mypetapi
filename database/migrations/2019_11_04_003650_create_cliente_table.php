@@ -15,15 +15,15 @@ class CreateClienteTable extends Migration
     {
         Schema::create('cliente', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Nombres')->require();
-            $table->string('Apellidos')->require();
-            $table->string('Correo')->require()->unique();
-            $table->string('Password')->require();
-            $table->string('CC')->require();
-            $table->string('Telefono')->require();
-            $table->string('Ciudad')->require();
-            $table->string('Barrio')->require();
-            $table->string('Direccion')->require();
+            $table->string('nombres')->require();
+            $table->string('apellidos')->require();
+            $table->string('correo')->require()->unique();
+            $table->string('password')->require();
+            $table->string('cc')->require();
+            $table->string('telefono')->require();
+            $table->string('ciudad')->require();
+            $table->string('barrio')->require();
+            $table->string('direccion')->require();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateCompraTable extends Migration
         Schema::create('compra', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_cliente')->references('id')->on('cliente');
-            $table->integer('id_tienda')->references('id')->on('tienda');
+            //$table->integer('id_tienda')->references('id')->on('tienda');
             $table->timestamps();
         });
     }

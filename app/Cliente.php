@@ -8,14 +8,14 @@ class Clientes extends Model
 {
     protected $fillable = [
         'id',
-        'Nombres',
-        'Apellidos',
-        'Correo',
-        'Password',
-        'CC',
-        'Telefono',
-        'Ciudad',
-        'Barrio',
-        'Direccion'
+        'nombres',
+        'apellidos',
+        'correo',
+        'password',
+        'cc',
+        'telefono',
+        'ciudad',
+        'barrio',
+        'direccion'
     ];
 }

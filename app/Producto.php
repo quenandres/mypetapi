@@ -10,27 +10,43 @@ class Producto extends Model
 
     public static $rules = [
         'nombre'       => 'required|string',
-        'categoria'    => 'required|numeric',
+        'categoria_id' => 'required|numeric',
+        'tienda_id'    => 'required|numeric',
         'stock'        => 'nullable',
         'precio'       => 'required',
-        'description'  => 'required|string',
+        'descripcion'  => 'required|string'
+    ];
+
+    public static $rulesUpdate = [
+        'nombre'       => 'nullable|string',
+        'categoria_id' => 'nullable|numeric',
+        'tienda_id'    => 'nullable|numeric',
+        'stock'        => 'nullable',
+        'precio'       => 'nullable',
+        'descripcion'  => 'nullable|string'
     ];
 
     protected $fillable = [
         'nombre',
-        'categoria',
+        'categoria_id',
+        'tienda_id',
         'stock',
         'precio',
-        'description',
+        'descripcion'
     ];
 
     protected $visible = [
         'id',
         'nombre',
-        'categoria',
+        'categoria_id',
+        'tienda_id',
         'stock',
         'precio',
-        'description',
-        'id_tienda'
+        'descripcion'
     ];
+
+    public function categoria()
+    {
+        return $this->hasOne('App\Categoria');
+    }
 }

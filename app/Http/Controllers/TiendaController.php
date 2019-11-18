@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Clientes;
+use App\Tienda;
 use Illuminate\Http\Request;
 
-class ClienteController extends Controller
+class TiendaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Clientes  $clientes
+     * @param  \App\Tienda  $tienda
      * @return \Illuminate\Http\Response
      */
-    public function show(Clientes $clientes)
+    public function show(Tienda $tienda)
     {
         //
     }
@@ -52,10 +52,10 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Clientes  $clientes
+     * @param  \App\Tienda  $tienda
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clientes $clientes)
+    public function edit(Tienda $tienda)
     {
         //
     }
@@ -64,10 +64,10 @@ class ClienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Clientes  $clientes
+     * @param  \App\Tienda  $tienda
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Clientes $clientes)
+    public function update(Request $request, Tienda $tienda)
     {
         //
     }
@@ -75,10 +75,10 @@ class ClienteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Clientes  $clientes
+     * @param  \App\Tienda  $tienda
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Clientes $clientes)
+    public function destroy(Tienda $tienda)
     {
         //
     }

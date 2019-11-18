@@ -13,9 +13,23 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json('Respuesta de index');
+        $productos = Producto::select('*');
+
+        if ( isset($request->nombre) ) {
+            $nombre = $request->nombre;
+            $productos =  $productos->where('nombre', $nombre);
+        }
+
+        if ( isset($request->categoria) ) {
+            $categoria = $request->categoria;
+            $productos =  $productos->where('categoria', $categoria);
+        }
+
+        $productos = $productos->orderBy('nombre')->get();
+        
+        return response()->json(['data' => $productos], 200);
     }
 
     /**
@@ -38,7 +52,7 @@ class ProductoController extends Controller
 
         } else {
             Producto::create($request->all());
-            return response()->json('Respuesta de index', 200);    
+            return response()->json('Producto creado', 200);    
         }
         
     }
@@ -49,20 +63,11 @@ class ProductoController extends Controller
      * @param  \App\Producto  $productos
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $productos)
+    public function show(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Producto  $productos
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Producto $productos)
-    {
-        //
+        $productos = Producto::select('*')->where('id',$id)->get();
+        
+        return response()->json(['data' => $productos], 200);
     }
 
     /**
@@ -72,9 +77,27 @@ class ProductoController extends Controller
      * @param  \App\Producto  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $productos)
+    public function update(Request $request, $id)
     {
-        //
+
+        die("Llega");
+
+        
+        $producto = Producto::select('*')->where('id',$id)->get();
+        
+        $validator = Validator::make($request->all(), Producto::$rulesUpdate);
+
+        if (count($validator->errors()->all()) > 0) {
+
+            return response()->json([
+                'message' => 'Error de validación de datos',
+                'errors' => $validator->errors()->all()
+            ], 422);
+
+        } else {
+            $producto::update($request->all());
+            return response()->json('Producto actualizado', 200);    
+        }
     }
 
     /**

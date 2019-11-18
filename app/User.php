@@ -8,14 +8,43 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public static $rules = [
+        'nombre'    => 'required|string',
+        'apellido'  => 'required|string',
+        'email'     => 'required|string',
+        'password'  => 'required|string',
+        'cc'        => 'required|string',
+        'tipo'      => 'required|string'
+    ];
+
+    public static $rulesUpdate = [
+        'nombre'    => 'nullable',
+        'apellido'  => 'nullable',
+        'email'     => 'nullable',
+        'password'  => 'nullable',
+        'cc'        => 'nullable',
+        'tipo'      => 'nullable'
+    ];
+    
     protected $fillable = [
-        'name', 'email', 'password',
+        'nombre',
+        'apellido',
+        'email', 
+        'password',
+        'cc',
+        'tipo',
+    ];
+
+
+    protected $visible = [
+        'id',
+        'nombre',
+        'apellido',
+        'email', 
+        'cc',
+        'tipo'
     ];
 
     /**

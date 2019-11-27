@@ -21,6 +21,7 @@ class CreateProductoTable extends Migration
             $table->integer('tienda_id')->require()->references('id')->on('tienda');    
 
 
+            $table->string('imagen');
             $table->integer('stock')->nullable();
             $table->double('precio', 8, 2)->require();
             $table->text('descripcion')->require();

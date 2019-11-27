@@ -12,6 +12,11 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        '/productos',
+        '/register',
+        '/tiendas',
+        '/compras',
+        '/comprasproducto',
+        '/categorias'
     ];
 }

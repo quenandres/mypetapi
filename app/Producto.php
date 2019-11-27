@@ -13,6 +13,7 @@ class Producto extends Model
         'categoria_id' => 'required|numeric',
         'tienda_id'    => 'required|numeric',
         'stock'        => 'nullable',
+        'imagen'       => 'required',
         'precio'       => 'required',
         'descripcion'  => 'required|string'
     ];
@@ -22,6 +23,7 @@ class Producto extends Model
         'categoria_id' => 'nullable|numeric',
         'tienda_id'    => 'nullable|numeric',
         'stock'        => 'nullable',
+        'imagen'        => 'nullable',
         'precio'       => 'nullable',
         'descripcion'  => 'nullable|string'
     ];
@@ -31,6 +33,7 @@ class Producto extends Model
         'categoria_id',
         'tienda_id',
         'stock',
+        'imagen',
         'precio',
         'descripcion'
     ];
@@ -41,6 +44,7 @@ class Producto extends Model
         'categoria_id',
         'tienda_id',
         'stock',
+        'imagen',
         'precio',
         'descripcion'
     ];

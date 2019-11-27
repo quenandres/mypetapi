@@ -13,6 +13,31 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['middleware' => 'cors'], function () {
+    Route::middleware('auth:api')->get('/user', function (Request $request) {
+        return $request->user();
+    });
+    
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    
+    Route::get('/saludo', function () {
+        return 'Hola';
+    });
+    
+    Auth::routes();
+    
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('/productos', 'ProductoController');
+    Route::resource('/tiendas', 'TiendaController');
+    Route::resource('/compras', 'CompraController');
+    Route::resource('/comprasproducto', 'CompraProductoController');
+    Route::resource('/categorias', 'CategoriaController');
+    Route::get('/ingreso/{user}/{pass}', 'UsuarioController@login');
+    Route::resource('/usuarios', 'UsuarioController');
 });
+
+
+

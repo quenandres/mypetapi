@@ -15,7 +15,7 @@ class CreateCompraProductoTable extends Migration
     {
         Schema::create('compra_producto', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('compra_id')->references('id')->on('compra');
+            $table->integer('compra_id')->nullable()->default(0);
             $table->integer('producto_id')->refenreces('id')->on('producto');
             $table->integer('cantidad')->require();
             $table->double('valor');

@@ -10,7 +10,7 @@ class CompraProducto extends Model
     protected $table = 'compra_producto';
 
     public static $rules = [
-        'compra_id'    => 'required|numeric',
+        'compra_id'    => 'nullable|numeric',
         'producto_id'  => 'required|numeric' ,       
         'cantidad'     => 'required|numeric',
         'valor'        => 'required'

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Validator;
+use App\Tienda;
 use App\Producto;
 use App\CompraProducto;
 use Illuminate\Http\Request;
@@ -17,15 +18,19 @@ class CompraProductoController extends Controller
     public function index(Request $request)
     {
         $compraproducto = CompraProducto::select('*');
-        $compraproducto = $compraproducto->orderBy('compra_id')->get();
+        $compraproducto = $compraproducto->get();
 
         foreach ($compraproducto as $key => $value) {
-            $nombre = Producto::select('nombre')->where('id', $value->producto_id)->first();
-            dd($nombre);
+            $empObj = new \stdClass();                
 
+            $producto = Producto::select('nombre')->where('id', $value->producto_id)->first();
+            $empObj->nombre = $producto->nombre;
+            $empObj->cantidad = $value->cantidad;
+            $empObj->valor = $value->valor;
+            $response[] = $empObj;
         }
         
-        return response()->json(['data' => $compraproducto], 200);
+        return response()->json(['data' => $response], 200);
     }
 
     /**
@@ -34,14 +39,15 @@ class CompraProductoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $producto_id, $cantidad)
     {   
+        $producto = Producto::select('precio')->where('id', $producto_id)->first();
 
-        $producto = Producto::select('precio')->where('id', $request->producto_id)->first();
-
-        $valor = $producto['precio'] * $request->cantidad;
+        $valor = $producto['precio'] * $cantidad;
         
         $request->request->add(['valor' => $valor]);
+        $request->request->add(['producto_id' => $producto_id]);
+        $request->request->add(['cantidad' => $cantidad]);
 
         $validator = Validator::make($request->all(), CompraProducto::$rules);
 

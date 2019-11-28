@@ -34,7 +34,8 @@ Route::group(['middleware' => 'cors'], function () {
     Route::resource('/tiendas', 'TiendaController');
     Route::resource('/compras', 'CompraController');
     Route::resource('/comprasproducto', 'CompraProductoController');
-    Route::resource('/categorias', 'CategoriaController');
+    Route::post('/registracompra/{producto_id}/{cantidad}', 'CompraProductoController@store');
+    Route::resource('/categorias', 'CategoriaController')->except(['store']);
     Route::get('/ingreso/{user}/{pass}', 'UsuarioController@login');
     Route::resource('/usuarios', 'UsuarioController');
 });

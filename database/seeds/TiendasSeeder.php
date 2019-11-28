@@ -13,27 +13,32 @@ class TiendasSeeder extends Seeder
     {
         DB::table('tienda')->insert([
             'nombre' => 'Tienda patitas',
-            'direccion' => 'Carrera 56 #11-12'
+            'direccion' => 'Carrera 56 #11-12',
+            'imagen' => 'tienda_patitas.png'
         ]);
 
         DB::table('tienda')->insert([
             'nombre' => 'Veterinaria cats',
-            'direccion' => 'Avenida 16 #23-01'
+            'direccion' => 'Avenida 16 #23-01',
+            'imagen' => 'Veterinaria_cats.jpeg'
         ]);
 
         DB::table('tienda')->insert([
-            'nombre' => 'Veterinaria canes',
-            'direccion' => 'Carrera 12 #22-12'
+            'nombre' => 'Hospital animal',
+            'direccion' => 'Carrera 12 #22-12',
+            'imagen' => 'hospital_animal.jpeg'
         ]);
 
         DB::table('tienda')->insert([
-            'nombre' => 'Tienda huellitas',
-            'direccion' => 'Carrera 67 #54-08'
+            'nombre' => 'Clinica veterinaria',
+            'direccion' => 'Carrera 67 #54-08',
+            'imagen' => 'clinica_veterinaria.jpeg'
         ]);
 
         DB::table('tienda')->insert([
-            'nombre' => 'Tienda pulgosos',
-            'direccion' => 'Carrera 3 #4-12'
+            'nombre' => 'Mevet',
+            'direccion' => 'Carrera 3 #4-12',
+            'imagen' => 'mevet.jpeg'
         ]);
 
     }

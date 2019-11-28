@@ -23,7 +23,7 @@ class Producto extends Model
         'categoria_id' => 'nullable|numeric',
         'tienda_id'    => 'nullable|numeric',
         'stock'        => 'nullable',
-        'imagen'        => 'nullable',
+        'imagen'       => 'nullable',
         'precio'       => 'nullable',
         'descripcion'  => 'nullable|string'
     ];

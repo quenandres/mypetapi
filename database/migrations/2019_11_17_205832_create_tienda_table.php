@@ -17,6 +17,7 @@ class CreateTiendaTable extends Migration
             $table->increments('id');
             $table->string('nombre');         
             $table->string('direccion');  
+            $table->string('imagen');  
             $table->timestamps();
         });
     }

@@ -42,7 +42,6 @@ class ProductoController extends Controller
     {   
         $validator = Validator::make($request->all(), Producto::$rules);
 
-
         if (count($validator->errors()->all()) > 0) {
 
             return response()->json([

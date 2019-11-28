@@ -10,23 +10,27 @@ class Tienda extends Model
 
     public static $rules = [
         'nombre'       => 'required|string',
-        'direccion' => 'required|numeric'        
+        'direccion' => 'required|numeric',
+        'imagen' => 'required'
     ];
 
     public static $rulesUpdate = [
         'nombre'       => 'nullable|string',
-        'direccion' => 'nullable|numeric'       
+        'direccion' => 'nullable|numeric',
+        'imagen' => 'nullable'
     ];
 
     protected $fillable = [
         'nombre',
-        'direccion'       
+        'direccion',
+        'imagen'
     ];
 
     protected $visible = [
         'id',
         'nombre',
-        'direccion'
+        'direccion',
+        'imagen'
     ];
 
     public function productos()

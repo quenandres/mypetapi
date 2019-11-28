@@ -25,16 +25,16 @@ class CompraProducto extends Model
 
     protected $fillable = [
         'id',
-        'id_compra',
-        'id_producto',
+        'compra_id',
+        'producto_id',
         'cantidad',
         'valor'
     ];
 
     protected $visible = [
         'id',
-        'id_compra',
-        'id_producto',
+        'compra_id',
+        'producto_id',
         'cantidad',
         'valor'
     ];

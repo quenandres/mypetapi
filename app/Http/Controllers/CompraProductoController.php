@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\CompraProducto;
 use Validator;
+use App\Producto;
+use App\CompraProducto;
 use Illuminate\Http\Request;
 
 class CompraProductoController extends Controller
@@ -16,13 +17,13 @@ class CompraProductoController extends Controller
     public function index(Request $request)
     {
         $compraproducto = CompraProducto::select('*');
-
-        if ( isset($request->compra_id) ) {
-            $compra_id = $request->compra_id;
-            $compraproducto =  $compraproducto->where('compra_id', $compra_id);
-        }
-
         $compraproducto = $compraproducto->orderBy('compra_id')->get();
+
+        foreach ($compraproducto as $key => $value) {
+            $nombre = Producto::select('nombre')->where('id', $value->producto_id)->first();
+            dd($nombre);
+
+        }
         
         return response()->json(['data' => $compraproducto], 200);
     }
@@ -35,8 +36,14 @@ class CompraProductoController extends Controller
      */
     public function store(Request $request)
     {   
-        $validator = Validator::make($request->all(), CompraProducto::$rules);
 
+        $producto = Producto::select('precio')->where('id', $request->producto_id)->first();
+
+        $valor = $producto['precio'] * $request->cantidad;
+        
+        $request->request->add(['valor' => $valor]);
+
+        $validator = Validator::make($request->all(), CompraProducto::$rules);
 
         if (count($validator->errors()->all()) > 0) {
 

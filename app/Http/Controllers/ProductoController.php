@@ -62,9 +62,9 @@ class ProductoController extends Controller
      * @param  \App\Producto  $productos
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $nombre)
     {
-        $productos = Producto::select('*')->where('id',$id)->get();
+        $productos = Producto::select('*')->where('nombre','like','%'.$nombre.'%')->get();
         
         return response()->json(['data' => $productos], 200);
     }

@@ -63,9 +63,9 @@ class TiendaController extends Controller
      * @param  \App\Tienda  $productos
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, $nombre)
     {
-        $productos = Tienda::select('*')->where('id',$id)->get();
+        $productos = Tienda::select('*')->where('nombre','like','%'.$nombre.'%')->get();
         
         return response()->json(['data' => $productos], 200);
     }

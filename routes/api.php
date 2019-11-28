@@ -38,6 +38,10 @@ Route::group(['middleware' => 'cors'], function () {
     Route::resource('/categorias', 'CategoriaController')->except(['store']);
     Route::get('/ingreso/{user}/{pass}', 'UsuarioController@login');
     Route::resource('/usuarios', 'UsuarioController');
+
+    Route::post('/buscatienda/{nombre}', 'TiendaController@show');
+    Route::post('/buscaproducto/{nombre}', 'ProductoController@show');
+
 });
 
 
